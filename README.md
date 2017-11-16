@@ -1,4 +1,4 @@
-PHP ChromeToPdf
+PHPHeadlessChrome
 ===============
 
 Headless Chrome is shipping in Chrome 59. It's a way to run the Chrome browser in a headless environment. Essentially, running Chrome without chrome! It brings all modern web platform features provided by Chromium and the Blink rendering engine to the command line.
