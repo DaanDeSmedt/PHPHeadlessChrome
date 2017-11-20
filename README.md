@@ -29,6 +29,7 @@ Use the `PHPHeadlessChrome` tool when you want to convert a webpage / HTML text 
 
 Working examples can be found in the `examples` folder.
 
+
 ## Webpage (URL) to PDF
 
 ```php
@@ -41,10 +42,65 @@ use daandesmedt\PHPHeadlessChrome\HeadlessChrome;
 $headlessChromer = new HeadlessChrome();
 $headlessChromer->setUrl('http://www.google.be');
 $headlessChromer->setBinaryPath('C:\Program Files (x86)\Google\Chrome\Application\chrome');
-// or $headlessChromer = new HeadlessChrome('http://www.google.be','C:\Program Files (x86)\Google\Chrome\Application\chrome');
-
 $headlessChromer->setOutputDirectory(__DIR__);
 $headlessChromer->toPDF('output.pdf');
 
 print 'PDF generated to : ' . $headlessChromer->getFilePath();
+```
+
+
+## Webpage (URL) to Screenshot (image)
+
+```php
+<?php 
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use daandesmedt\PHPHeadlessChrome\HeadlessChrome;
+
+$headlessChromer = new HeadlessChrome();
+$headlessChromer->setUrl('http://www.google.be');
+$headlessChromer->setBinaryPath('C:\Program Files (x86)\Google\Chrome\Application\chrome');
+$headlessChromer->setOutputDirectory(__DIR__);
+$headlessChromer->toScreenShot('output.jpg');
+
+print 'Screenshot saved to : ' . $headlessChromer->getFilePath();
+```
+
+
+## HTML (String) to PDF
+
+```php
+<?php 
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use daandesmedt\PHPHeadlessChrome\HeadlessChrome;
+
+$headlessChromer = new HeadlessChrome();
+$headlessChromer->setBinaryPath('C:\Program Files (x86)\Google\Chrome\Application\chrome');
+$headlessChromer->setOutputDirectory(__DIR__);
+$headlessChromer->setHTML('<h1>Headless Chrome PHP example</h1><h3>HTML to PDF</h3>');
+$headlessChromer->toPDF('output.pdf');
+
+print 'PDF generated to : ' . $headlessChromer->getFilePath();
+```
+
+
+## HTML (String) to Screenshot (image)
+
+```php
+<?php 
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use daandesmedt\PHPHeadlessChrome\HeadlessChrome;
+
+$headlessChromer = new HeadlessChrome();
+$headlessChromer->setBinaryPath('C:\Program Files (x86)\Google\Chrome\Application\chrome');
+$headlessChromer->setOutputDirectory(__DIR__);
+$headlessChromer->setHTML('<h1>Headless Chrome PHP example</h1><h3>HTML to PDF</h3>');
+$headlessChromer->toScreenShot('output.jpg');
+
+print 'Screenshot saved to : ' . $headlessChromer->getFilePath();
 ```
