@@ -1,12 +1,12 @@
 {
     "name": "daandesmedt/phpheadlesschrome",
     "description": "A PHP wrapper for using Google Chrome Headless mode. Convert URL or HTML to a PDF / screenshot. Easy to use and OOP interfaced.",
-    "type": "librbrary",
+    "type": "library",
     "require": {
         "mikehaertl/php-shellcommand": "^1.2"
     },
     "license": "MIT",
-	"keywords": ["html","headless","php","pdf","chrome","screenshots"],
+	"keywords": ["HTML","headless","php","pdf","chrome","screenshots"],
     "authors": [
         {
             "name": "Daan De Smedt",
