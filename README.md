@@ -1,17 +1,12 @@
 PHPHeadlessChrome
 ===============
 
-[![Latest Stable Version](https://poser.pugx.org/daandesmedt/phpheadlesschrome/v/stable)](https://packagist.org/packages/daandesmedt/phpheadlesschrome)
-[![Total Downloads](https://poser.pugx.org/daandesmedt/phpheadlesschrome/downloads)](https://packagist.org/packages/daandesmedt/phpheadlesschrome)
-[![License](https://poser.pugx.org/daandesmedt/phpheadlesschrome/license)](https://packagist.org/packages/daandesmedt/phpheadlesschrome)
-
-
 Headless Chrome is shipping in Chrome 59. It's a way to run the Chrome browser in a headless environment. Essentially, running Chrome without chrome! It brings all modern web platform features provided by Chromium and the Blink rendering engine to the command line.
 
-PHPHeadlessChrome provides a simple usage helper class to create PDF and / or screenshots using Headless Chrome.
-Trigger PDF / Screenshots generation from local file / URL.
+PHPHeadlessChrome provides a simple usage helper class to create PDF and / or screenshots using a Headless Chrome instance.
+**Trigger PDF / Screenshots generation for webpages / string HTML or local URL.**
 
-In order to use this PHPHeadlessChrome helper make sure Google Chrome is correctly installer from version 59 and onwards.
+In order to use this PHPHeadlessChrome helper make sure Google Chrome is correctly installer from version 59 or onwards.
 
 
 ## Installation
