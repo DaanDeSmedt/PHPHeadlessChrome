@@ -20,12 +20,31 @@ composer require daandesmedt/phpheadlesschrome
 Make sure, that you include the composer [autoloader](https://getcomposer.org/doc/01-basic-usage.md#autoloading) somewhere in your codebase.
 
 
-## Examples
+## Usage
 
-Use the `PHPHeadlessChrome` tool
+Use the `PHPHeadlessChrome` tool when you want to convert a webpage / HTML text or (local) HTML file to a PDF or image screenshot.
 
 
-## Examples
+## Working examples
 
 Working examples can be found in the `examples` folder.
 
+## Webpage (URL) to PDF
+
+```php
+<?php 
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use daandesmedt\PHPHeadlessChrome\HeadlessChrome;
+
+$headlessChromer = new HeadlessChrome();
+$headlessChromer->setUrl('http://www.google.be');
+$headlessChromer->setBinaryPath('C:\Program Files (x86)\Google\Chrome\Application\chrome');
+// or $headlessChromer = new HeadlessChrome('http://www.google.be','C:\Program Files (x86)\Google\Chrome\Application\chrome');
+
+$headlessChromer->setOutputDirectory(__DIR__);
+$headlessChromer->toPDF('output.pdf');
+
+print 'PDF generated to : ' . $headlessChromer->getFilePath();
+```
