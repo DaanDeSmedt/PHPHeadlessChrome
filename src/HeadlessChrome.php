@@ -240,7 +240,7 @@ class HeadlessChrome {
             $PDFFilename .= '.pdf';
         }
 
-        $location = $this->getOutputDirectory() . '\\' . $PDFFilename;
+        $location = $this->getOutputDirectory() . DIRECTORY_SEPARATOR . $PDFFilename;
         $this->filePath = $location;
 
         $specific_arguments = [
@@ -272,7 +272,7 @@ class HeadlessChrome {
             $imageFilename .= '.jpg';
         }
 
-        $location = $this->getOutputDirectory() . '\\' . $imageFilename;
+        $location = $this->getOutputDirectory() . DIRECTORY_SEPARATOR . $imageFilename;
         $this->filePath = $location;
 
         $specific_arguments = [
