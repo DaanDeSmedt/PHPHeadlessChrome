@@ -130,10 +130,10 @@ class HeadlessChrome {
      */
     public function setOutputDirectory($directory)
     {
-        $this->outputDirectory = trim($directory);
-        if (!file_exists($directory)) {
+        if (!file_exists($directory) || !realpath($directory)) {
             @mkdir($directory);
         }
+        $this->outputDirectory = realpath(trim($directory));
     }
 
 

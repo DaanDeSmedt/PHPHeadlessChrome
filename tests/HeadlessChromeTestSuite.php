@@ -34,7 +34,7 @@ final class HeadlessChromeTestSuite extends TestCase{
     public function testSetOutputDirectory() {
         $headlessChromer = new HeadlessChrome();
         $headlessChromer->setOutputDirectory($this->ouputDirectory);
-        $this->assertEquals($this->ouputDirectory, $headlessChromer->getOutputDirectory());
+        $this->assertEquals(realpath($this->ouputDirectory), $headlessChromer->getOutputDirectory());
     }
 
 
