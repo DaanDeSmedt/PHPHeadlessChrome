@@ -226,14 +226,14 @@ class HeadlessChrome {
 
     /**
      * To PDF for the specified URL
-     * @param  String       $PDFfilename
+     * @param  String       $PDFFilename
      * @return String       $location
      * @throws Exception
      */
     public function toPDF($PDFFilename = null){
         
         if(!isset($PDFFilename)){
-            $PDFfilename = $this->getUniqueName('pdf');
+            $PDFFilename = $this->getUniqueName('pdf');
         }
 
         if ($PDFFilename && !strstr($PDFFilename, '.pdf')) {
