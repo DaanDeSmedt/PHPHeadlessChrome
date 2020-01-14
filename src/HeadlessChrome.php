@@ -347,4 +347,26 @@ class HeadlessChrome {
         return $this->filePath;
     }
 
+
+    /**
+     * Get the DOM from the specified URL
+     * @return String       HTML DOM
+     * @throws Exception
+     */
+    public function getDOM(){
+
+        $specific_arguments = [
+            '--dump-dom' => ''
+        ];
+
+        $arguments = array_merge($specific_arguments, $this->getArguments());
+        if (!$this->executeChrome($arguments)) {
+            throw new Exception('An error occurred while getting the DOM; <' . $this->getExitCode() . '> with message "' . $this->getError() . '"');
+        }
+		else {
+			return $this->command->getOutput();
+		}
+    }
+
+    
 }
