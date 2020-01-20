@@ -158,6 +158,7 @@ $headlessChromer = new HeadlessChrome();
 $headlessChromer->setBinaryPath('C:\Program Files (x86)\Google\Chrome\Application\chrome');
 $headlessChromer->setOutputDirectory(__DIR__);
 $headlessChromer->setHTMLFile(__DIR__ . '\assets\HTMLFile.html');
+
 var_dump($headlessChromer->getDOM());
 ```
 
