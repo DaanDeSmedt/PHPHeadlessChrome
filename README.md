@@ -145,6 +145,23 @@ print 'Screenshot saved to : ' . $headlessChromer->getFilePath();
 ```
 
 
+## HTML to DOM dump
+
+```php
+<?php 
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use daandesmedt\PHPHeadlessChrome\HeadlessChrome;
+
+$headlessChromer = new HeadlessChrome();
+$headlessChromer->setBinaryPath('C:\Program Files (x86)\Google\Chrome\Application\chrome');
+$headlessChromer->setOutputDirectory(__DIR__);
+$headlessChromer->setHTMLFile(__DIR__ . '\assets\HTMLFile.html');
+var_dump($headlessChromer->getDOM());
+```
+
+
 ## Set mobile mode
 
 ```php
