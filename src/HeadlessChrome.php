@@ -127,11 +127,13 @@ class HeadlessChrome {
     /**
      * Set the directory for render output (PDF / Screenshot)
      * @param String $directory
+     * @param int $mode
+     * @param bool $recursive
      */
-    public function setOutputDirectory($directory)
+    public function setOutputDirectory($directory, $mode = 0777, $recursive = false)
     {
         if (!file_exists($directory) || !realpath($directory)) {
-            @mkdir($directory);
+            @mkdir($directory, $mode, $recursive);
         }
         $this->outputDirectory = realpath(trim($directory));
     }
