@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace daandesmedt\PHPHeadlessChrome;
 
@@ -6,7 +6,8 @@ use Exception;
 use mikehaertl\shellcommand\Command;
 
 
-class HeadlessChrome {
+class HeadlessChrome
+{
 
     /**
      * Path to the Chrome binary
@@ -18,7 +19,7 @@ class HeadlessChrome {
      * Argument list to execute for Headless Chrome
      * @var String
      */
-    private $arguments;    
+    private $arguments;
 
     /**
      * Output directory for render
@@ -54,8 +55,9 @@ class HeadlessChrome {
      * Check the value for <Executable Path>
      * 
      */
-    public function __construct($url = null, $binaryPath = null, $outputDirectory = null){
-        
+    public function __construct($url = null, $binaryPath = null, $outputDirectory = null)
+    {
+
         $this->setArguments([
             '--headless' => '',
             '--disable-gpu' => '',
@@ -63,20 +65,19 @@ class HeadlessChrome {
             '--enable-viewport' => ''
         ]);
 
-        if(isset($binaryPath)) {
+        if (isset($binaryPath)) {
             $this->setBinaryPath($binaryPath);
         }
-    
-        if (isset($url)){
+
+        if (isset($url)) {
             $this->setUrl($url);
         }
 
-        if(isset($outputDirectory)){
+        if (isset($outputDirectory)) {
             $this->setOutputDirectory($outputDirectory);
         } else {
             $this->setOutputDirectory(sys_get_temp_dir());
         }
-        
     }
 
 
@@ -84,7 +85,8 @@ class HeadlessChrome {
      * Set a list of arguments
      * @param Array $arguments
      */
-    public function setArguments(array $arguments) {
+    public function setArguments(array $arguments)
+    {
         foreach ($arguments as $argument => $value) {
             $this->setArgument($argument, $value);
         }
@@ -96,8 +98,9 @@ class HeadlessChrome {
      * @param String $argument
      * @param String $value
      */
-    public function setArgument($argument, $value) {        
-        if(!strlen(trim($argument)) && !strlen(trim($value))) return;
+    public function setArgument($argument, $value)
+    {
+        if (!strlen(trim($argument)) && !strlen(trim($value))) return;
         $argument = trim($argument);
         if (!empty($value) && !strstr($argument, '=')) {
             $argument .= '=';
@@ -110,7 +113,8 @@ class HeadlessChrome {
      * Set path to the Chrome binary
      * @param String $binaryPath
      */
-    public function setBinaryPath($binaryPath){
+    public function setBinaryPath($binaryPath)
+    {
         $this->binaryPath = $binaryPath;
     }
 
@@ -119,7 +123,8 @@ class HeadlessChrome {
      * Set the target URL
      * @param String $url
      */
-    public function setUrl($url) {
+    public function setUrl($url)
+    {
         $this->url = trim($url);
     }
 
@@ -142,7 +147,8 @@ class HeadlessChrome {
      * @param integer $width
      * @param integer $height
      */
-    public function setWindowSize($width, $height) {
+    public function setWindowSize($width, $height)
+    {
         $this->setArgument('--window-size', $width . ',' . $height);
     }
 
@@ -151,7 +157,8 @@ class HeadlessChrome {
      * Set raw HTML
      * @param String $html
      */
-    public function setHTML($html) {
+    public function setHTML($html)
+    {
         $this->setUrl('data:text/html,' . rawurlencode($html));
     }
 
@@ -161,7 +168,8 @@ class HeadlessChrome {
      * @param  String       $filePath
      * @throws Exception    If the file is not found
      */
-    public function setHTMLFile($filePath) {
+    public function setHTMLFile($filePath)
+    {
         if (!file_exists($filePath)) {
             throw new Exception("$filePath not found");
         }
@@ -172,8 +180,18 @@ class HeadlessChrome {
     /**
      * Sets the mobile mode
      */
-    public function useMobile(){
+    public function useMobile()
+    {
         $this->setArgument('--user-agent', 'Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; LG-L160L Build/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30');
+    }
+
+
+    /**
+     * Disable display of header and footer in the PDF file
+     */
+    public function disablePDFHeader()
+    {
+        $this->setArgument('--print-to-pdf-no-header', '');
     }
 
 
@@ -182,7 +200,8 @@ class HeadlessChrome {
      * Get path to the Chrome binary
      * @return String $binaryPath
      */
-    public function getBinaryPath(){
+    public function getBinaryPath()
+    {
         return $this->binaryPath;
     }
 
@@ -191,7 +210,8 @@ class HeadlessChrome {
      * Get the target URL
      * @return String $url
      */
-    public function getUrl() {
+    public function getUrl()
+    {
         return $this->url;
     }
 
@@ -200,7 +220,8 @@ class HeadlessChrome {
      * Get the directory for render output (PDF / Screenshot)
      * @return String $directory
      */
-    public function getOutputDirectory() {
+    public function getOutputDirectory()
+    {
         return $this->outputDirectory;
     }
 
@@ -209,7 +230,8 @@ class HeadlessChrome {
      * Gets arguments list used for executing Headless Chrome
      * @return Array
      */
-    public function getArguments(){
+    public function getArguments()
+    {
         return $this->arguments;
     }
 
@@ -219,7 +241,8 @@ class HeadlessChrome {
      * @param  String $extension (pdf / html)
      * @return String unique filename
      */
-    private function getUniqueName($extension) {
+    private function getUniqueName($extension)
+    {
         return md5(date('Y-m-d H:i:s:u')) . '.' . $extension;
     }
 
@@ -230,9 +253,10 @@ class HeadlessChrome {
      * @return String       $location
      * @throws Exception
      */
-    public function toPDF($PDFFilename = null){
-        
-        if(!isset($PDFFilename)){
+    public function toPDF($PDFFilename = null)
+    {
+
+        if (!isset($PDFFilename)) {
             $PDFFilename = $this->getUniqueName('pdf');
         }
 
@@ -253,7 +277,6 @@ class HeadlessChrome {
         }
 
         return $location;
-
     }
 
     /**
@@ -262,9 +285,10 @@ class HeadlessChrome {
      * @return String       $location
      * @throws Exception
      */
-    public function toScreenShot($imageFilename = null) {
+    public function toScreenShot($imageFilename = null)
+    {
 
-        if(!isset($imageFilename)){
+        if (!isset($imageFilename)) {
             $imageFilename = $this->getUniqueName('jpg');
         }
 
@@ -285,20 +309,20 @@ class HeadlessChrome {
         }
 
         return $location;
-
     }
-    
+
 
     /**
      * Execute Chrome using all provided arguments
      * @param  Array $arguments
      * @return Boolean
      */
-    private function executeChrome(array $arguments) {
-        $this->command = new Command('' . $this->binaryPath . '');  
+    private function executeChrome(array $arguments)
+    {
+        $this->command = new Command('' . $this->binaryPath . '');
         foreach ($arguments as $argument => $value) {
             $this->command->addArg($argument, $value ? $value : null);
-        }        
+        }
         $this->command->addArg($this->url, null);
 
         if (!$this->command->execute()) {
@@ -312,8 +336,9 @@ class HeadlessChrome {
      * Get the last error message
      * @return String the error message, either stderr or internal message. Empty if none.
      */
-    public function getError(){
-        if(!$this->command) return;
+    public function getError()
+    {
+        if (!$this->command) return;
         return $this->command->getError();
     }
 
@@ -322,8 +347,9 @@ class HeadlessChrome {
      * Get the last command exit code
      * @return Int|null the exit code or null if command was not executed yet
      */
-    public function getExitCode(){
-        if(!$this->command) return;
+    public function getExitCode()
+    {
+        if (!$this->command) return;
         return $this->command->getExitCode();
     }
 
@@ -332,8 +358,9 @@ class HeadlessChrome {
      * Get command string command
      * @return string the current command string to execute
      */
-    public function getCommandString(){
-        if(!$this->command) return;
+    public function getCommandString()
+    {
+        if (!$this->command) return;
         return $this->command->__toString();
     }
 
@@ -342,8 +369,9 @@ class HeadlessChrome {
      * Get last know filePath location
      * @return string the current command string to execute
      */
-    public function getFilePath(){
-        if(!$this->command) return;
+    public function getFilePath()
+    {
+        if (!$this->command) return;
         return $this->filePath;
     }
 
@@ -353,7 +381,8 @@ class HeadlessChrome {
      * @return String       HTML DOM
      * @throws Exception
      */
-    public function getDOM(){
+    public function getDOM()
+    {
 
         $specific_arguments = [
             '--dump-dom' => ''
@@ -362,11 +391,8 @@ class HeadlessChrome {
         $arguments = array_merge($specific_arguments, $this->getArguments());
         if (!$this->executeChrome($arguments)) {
             throw new Exception('An error occurred while getting the DOM; <' . $this->getExitCode() . '> with message "' . $this->getError() . '"');
+        } else {
+            return $this->command->getOutput();
         }
-		else {
-			return $this->command->getOutput();
-		}
     }
-
-    
 }

@@ -174,3 +174,9 @@ $headlessChromer->useMobile();
 ```php
 $headlessChromer->setWindowSize(375, 667);
 ```
+
+## Disable display of header and footer in the PDF print
+
+```php
+$headlessChromer->disablePDFHeader();
+```
