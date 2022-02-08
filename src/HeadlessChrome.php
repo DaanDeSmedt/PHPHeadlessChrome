@@ -245,7 +245,7 @@ class HeadlessChrome
      */
     private function getUniqueName($extension)
     {
-        return md5(date('Y-m-d H:i:s:u')) . '.' . $extension;
+        return md5((new \DateTime())->format('Y-m-d H:i:s:u')) . '.' . $extension;
     }
 
 
