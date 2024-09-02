@@ -8,10 +8,10 @@ PHPHeadlessChrome provides a simple usage helper class to create PDF and / or sc
 
 In order to use this PHPHeadlessChrome helper make sure Google Chrome is correctly installer from version 59 or onwards.
 
-[![Latest Stable Version](http://poser.pugx.org/daandesmedt/phpheadlesschrome/v)](https://packagist.org/packages/daandesmedt/phpheadlesschrome)
-[![Total Downloads](http://poser.pugx.org/daandesmedt/phpheadlesschrome/downloads)](https://packagist.org/packages/daandesmedt/phpheadlesschrome)
-[![Daily Downloads](http://poser.pugx.org/daandesmedt/phpheadlesschrome/d/daily)](https://packagist.org/packages/daandesmedt/phpheadlesschrome)
-[![License](http://poser.pugx.org/daandesmedt/phpheadlesschrome/license)](https://packagist.org/packages/daandesmedt/phpheadlesschrome)
+[![Latest Stable Version](https://poser.pugx.org/daandesmedt/phpheadlesschrome/v)](https://packagist.org/packages/daandesmedt/phpheadlesschrome)
+[![Total Downloads](https://poser.pugx.org/daandesmedt/phpheadlesschrome/downloads)](https://packagist.org/packages/daandesmedt/phpheadlesschrome)
+[![Daily Downloads](https://poser.pugx.org/daandesmedt/phpheadlesschrome/d/daily)](https://packagist.org/packages/daandesmedt/phpheadlesschrome)
+[![License](https://poser.pugx.org/daandesmedt/phpheadlesschrome/license)](https://packagist.org/packages/daandesmedt/phpheadlesschrome)
 
 ## Installation
 
